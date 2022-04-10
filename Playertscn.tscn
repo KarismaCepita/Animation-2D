@@ -1,0 +1,61 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Playertscn.gd" type="Script" id=1]
+[ext_resource path="res://Conejo/caminar1.png" type="Texture" id=2]
+[ext_resource path="res://Conejo/quieto.png" type="Texture" id=3]
+[ext_resource path="res://Conejo/salto_comun.png" type="Texture" id=4]
+[ext_resource path="res://Conejo/salto_doble1.png" type="Texture" id=5]
+[ext_resource path="res://Conejo/salto_doble2.png" type="Texture" id=6]
+[ext_resource path="res://Conejo/salto_doble3.png" type="Texture" id=7]
+[ext_resource path="res://Conejo/salto_doble4.png" type="Texture" id=8]
+[ext_resource path="res://Conejo/caminar2.png" type="Texture" id=9]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "Caminar",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Salto Doble",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Salto Normal",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 48, 60 )
+
+[node name="Jugador" type="KinematicBody2D"]
+position = Vector2( 319, 449 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Animaciones" type="AnimatedSprite" parent="."]
+position = Vector2( -2, -14 )
+scale = Vector2( 0.583333, 0.55314 )
+frames = SubResource( 2 )
+animation = "Default"
+playing = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 3, -15 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
